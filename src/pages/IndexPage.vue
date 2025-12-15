@@ -1,43 +1,25 @@
 <template>
-  <q-page class="row items-center justify-evenly">
-    <example-component
-      title="Example component"
-      active
-      :todos="todos"
-      :meta="meta"
-    ></example-component>
+  <q-page class="q-pa-md">
+    <q-card>
+      <q-card-section>
+        <div class="text-h4 q-mb-md">pgvector Semantic Search Demo</div>
+        <div class="text-body1 q-mb-lg">
+          This is a demonstration of semantic search using pgvector and Gemini embeddings for Purchase Invoices.
+        </div>
+        <q-btn
+          color="primary"
+          size="lg"
+          label="Go to Purchase Invoices"
+          icon="receipt"
+          @click="router.push('/purchase-invoice')"
+        />
+      </q-card-section>
+    </q-card>
   </q-page>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import type { Todo, Meta } from 'components/models';
-import ExampleComponent from 'components/ExampleComponent.vue';
+import { useRouter } from 'vue-router';
 
-const todos = ref<Todo[]>([
-  {
-    id: 1,
-    content: 'ct1',
-  },
-  {
-    id: 2,
-    content: 'ct2',
-  },
-  {
-    id: 3,
-    content: 'ct3',
-  },
-  {
-    id: 4,
-    content: 'ct4',
-  },
-  {
-    id: 5,
-    content: 'ct5',
-  },
-]);
-
-const meta = ref<Meta>({
-  totalCount: 1200,
-});
+const router = useRouter();
 </script>
