@@ -1,17 +1,44 @@
 import { api } from 'src/boot/axios';
 
+export interface PurchaseInvoiceItem {
+  id?: number;
+  productName?: string;
+  productCode?: string;
+  description?: string;
+  hsn?: string;
+  quantity: number;
+  uom?: string;
+  price: number;
+  total: number;
+  discountAmount?: number;
+  discountPercentage?: number;
+  taxAmount?: number;
+  netTotal: number;
+  srNo?: number;
+}
+
 export interface PurchaseInvoice {
   id: number;
   invoiceNumber: string;
   companyId: number;
   branchId: number;
   vendorAccountId?: number | null;
-  invoiceDate: string;
+  invoiceDate?: string;
   vendorName?: string | null;
   vendorReference?: string | null;
   billNumber?: string | null;
+  billDate?: string | null;
+  invoiceType?: string | null;
+  taxNature?: string | null;
+  dueDate?: string | null;
   narration?: string | null;
+  termsConditions?: string | null;
+  subtotal?: number | string;
+  discountAmount?: number | string;
+  taxAmount?: number | string;
   totalAmount?: number | string;
+  taxInclusive?: boolean;
+  items?: PurchaseInvoiceItem[];
   embedding?: string | null;
   createdAt?: string;
   updatedAt?: string;
@@ -26,8 +53,18 @@ export interface CreatePurchaseInvoiceDto {
   vendorName?: string;
   vendorReference?: string;
   billNumber?: string;
+  billDate?: string;
+  invoiceType?: string;
+  taxNature?: string;
+  dueDate?: string;
   narration?: string;
+  termsConditions?: string;
+  subtotal?: number;
+  discountAmount?: number;
+  taxAmount?: number;
   totalAmount?: number;
+  taxInclusive?: boolean;
+  items?: PurchaseInvoiceItem[];
 }
 
 export interface UpdatePurchaseInvoiceDto {
@@ -37,8 +74,18 @@ export interface UpdatePurchaseInvoiceDto {
   vendorName?: string;
   vendorReference?: string;
   billNumber?: string;
+  billDate?: string;
+  invoiceType?: string;
+  taxNature?: string;
+  dueDate?: string;
   narration?: string;
+  termsConditions?: string;
+  subtotal?: number;
+  discountAmount?: number;
+  taxAmount?: number;
   totalAmount?: number;
+  taxInclusive?: boolean;
+  items?: PurchaseInvoiceItem[];
 }
 
 export interface SearchPurchaseInvoiceDto {
