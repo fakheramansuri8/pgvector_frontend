@@ -18,7 +18,7 @@
             <div class="text-h6 q-mb-md">Smart Search</div>
             <q-input
               v-model="searchQuery"
-              placeholder="Search invoices... (e.g., 'Ramlal invoice for this date')"
+              placeholder="Search invoices.."
               outlined
               dense
               debounce="300"
@@ -29,33 +29,8 @@
               </template>
             </q-input>
             <div class="row q-gutter-sm q-mt-sm">
-              <q-input
-                v-model.number="filters.companyId"
-                label="Company ID"
-                type="number"
-                outlined
-                dense
-                style="width: 150px"
-              />
-              <q-input
-                v-model.number="filters.branchId"
-                label="Branch ID"
-                type="number"
-                outlined
-                dense
-                style="width: 150px"
-              />
-              <q-btn
-                color="primary"
-                label="Search"
-                @click="performSearch"
-                :loading="isSearching"
-              />
-              <q-btn
-                color="grey"
-                label="Clear"
-                @click="clearSearch"
-              />
+              <q-btn color="primary" label="Search" @click="performSearch" :loading="isSearching" />
+              <q-btn color="grey" label="Clear" @click="clearSearch" />
             </div>
           </q-card-section>
         </q-card>
@@ -80,12 +55,7 @@
           </template>
           <template v-slot:body-cell-actions="props">
             <q-td :props="props">
-              <q-btn
-                flat
-                dense
-                icon="edit"
-                @click="editInvoice(props.row.id)"
-              />
+              <q-btn flat dense icon="edit" @click="editInvoice(props.row.id)" />
               <q-btn
                 flat
                 dense
@@ -155,7 +125,7 @@ const columns = [
     field: 'totalAmount',
     align: 'right' as const,
     format: (val: number | string) => {
-      const num = typeof val === 'string' ? parseFloat(val) : (val || 0);
+      const num = typeof val === 'string' ? parseFloat(val) : val || 0;
       return `₹${num.toFixed(2)}`;
     },
   },
@@ -282,4 +252,3 @@ export default {
   name: 'PIListPage',
 };
 </script>
-

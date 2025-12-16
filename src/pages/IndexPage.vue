@@ -2,10 +2,7 @@
   <q-page class="q-pa-md">
     <q-card>
       <q-card-section>
-        <div class="text-h4 q-mb-md">pgvector Semantic Search Demo</div>
-        <div class="text-body1 q-mb-lg">
-          This is a demonstration of semantic search using pgvector and Gemini embeddings for Purchase Invoices.
-        </div>
+        <div class="text-body1 q-mb-lg">Semantic search using pgvector</div>
         <q-btn
           color="primary"
           size="lg"
