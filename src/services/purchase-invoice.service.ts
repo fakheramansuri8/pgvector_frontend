@@ -94,6 +94,8 @@ export interface SearchPurchaseInvoiceDto {
   branchId?: number;
   dateFrom?: string;
   dateTo?: string;
+  amountMin?: number;
+  amountMax?: number;
   limit?: number;
 }
 
